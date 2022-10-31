@@ -1,0 +1,44 @@
+﻿@model IEnumerable<EmployeeWebApp.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2><b>HomePage</b></h2>
+<br/>
+<table class="table">
+    <tr>
+        <th>
+            <span class="table-heading">@Html.DisplayNameFor(model => model.EmployeeName)</span>
+        </th>
+        <th>
+            <span class="table-heading">@Html.DisplayNameFor(model => model.EmployeeEmail)</span>
+        </th>
+        <th>
+            <span class="table-heading">@Html.DisplayNameFor(model => model.EmployeeJob)</span>
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <span class="table-content">@Html.DisplayFor(modelItem => item.EmployeeName)</span>
+            </td>
+            <td>
+                <span class="table-content">@Html.DisplayFor(modelItem => item.EmployeeEmail)</span>
+            </td>
+            <td>
+                <span class="table-content"> @Html.DisplayFor(modelItem => item.EmployeeJob)</span>
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "EditEmployee", new { EmployeeId = item.EmpId }, new { @class = "editLink" }) |
+                @Html.ActionLink("Delete", "DeleteEmployee", new { EmployeeId = item.EmpId }, new { @class = "deleteLink" })
+            </td>
+        </tr>
+    }
+</table>
+
