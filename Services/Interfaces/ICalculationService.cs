@@ -11,5 +11,8 @@ namespace EmployeeWebApp.Services.Interfaces
     {
         //int CountWorkingDays(DateTime startDay, DateTime endDay);
         int CountWorkingDays(DayCalculation day);
+        int CountHolidays(DayCalculation day); 
+        int CountAllDays(DayCalculation day);
+
     }
 }

@@ -19,6 +19,26 @@ namespace EmployeeWebApp.Services
             _holidayRepository = holidayRepository; 
         }
 
+        //Count the number of all days
+
+        public int CountAllDays(DayCalculation day)
+        {
+            var startDay = day.StartingDate;
+            var endDay = day.EndDate;
+            TimeSpan difference = endDay - startDay;
+            int allDays = difference.Days + 1;
+            return allDays;
+        }
+
+
+        //Count the all holidays
+        public int CountHolidays(DayCalculation day)
+        {
+            int allPublicHolidays = CountAllDays(day) - CountWorkingDays(day);
+            return allPublicHolidays;
+        }
+
+        //Count the all working days
         public int CountWorkingDays(DayCalculation dayCalculation)
         {
             var startDay = dayCalculation.StartingDate;
@@ -70,7 +90,6 @@ namespace EmployeeWebApp.Services
                 }
 
             }
-
             return workingDays;
         }
 

@@ -33,11 +33,18 @@ namespace EmployeeWebApp.Controllers
         }
 
 
+        //Http Post method for counting working days, number of days and number of holidays between two dates
         [HttpPost]
         public ActionResult CountWorkingDays(DayCalculation dc)
         {
-            int val =  _calService.CountWorkingDays(dc);
-            TempData["Data"] = val;
+            int daysOfWorking = _calService.CountWorkingDays(dc);
+            int daysOfAll = _calService.CountAllDays(dc);
+            int daysOfHolidays = _calService.CountHolidays(dc);
+
+            TempData["Data"] = daysOfWorking;
+            TempData["Data1"] = daysOfAll;
+            TempData["Data2"] = daysOfHolidays;
+
             return View(dc);
         }
 
